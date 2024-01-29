@@ -1,4 +1,4 @@
-from process_receipts import *
+from process_receipts import calculate_reward_points
 import json
 
 with open('examples/target2-receipt.json') as receipt:
@@ -11,7 +11,7 @@ with open('examples/corner-market.json') as receipt:
     corner_market_receipt = json.load(receipt)
 
 
-def test_target2_receipt():
+def test_target2_receipt() -> bool:
     test_passed = True
 
     # Test the target2 receipt
@@ -23,7 +23,7 @@ def test_target2_receipt():
 
     return test_passed
 
-def test_corner_market_receipt():
+def test_corner_market_receipt() -> bool:
     test_passed = True
 
     # Test the corner market receipt

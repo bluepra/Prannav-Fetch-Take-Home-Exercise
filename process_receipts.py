@@ -2,7 +2,7 @@ import math
 
 # v----------- RULES FOR POINTS -----------v
 
-def retailer_name_alphanum_pts(retailer_name):
+def retailer_name_alphanum_pts(retailer_name: str) -> int:
     pts = 0
 
     # For each letter of the retailer num, add a point
@@ -13,7 +13,7 @@ def retailer_name_alphanum_pts(retailer_name):
 
     return pts
 
-def total_round_num_pts(total):
+def total_round_num_pts(total: float) -> int:
     pts = 0
 
     # If the total is a whole number, add 50 pts
@@ -22,7 +22,7 @@ def total_round_num_pts(total):
 
     return pts
 
-def total_multiple_of_pts(total):
+def total_multiple_of_pts(total: float) -> int:
     pts = 0
 
     # If total is a multiple of .25, add 25 pts
@@ -31,7 +31,7 @@ def total_multiple_of_pts(total):
 
     return pts
 
-def every_two_items_pts(num_items):
+def every_two_items_pts(num_items: int) -> int:
     pts = 0
 
     pts_per_two_items = 5
@@ -40,7 +40,7 @@ def every_two_items_pts(num_items):
 
     return pts
 
-def item_descriptions_trimmed_pts(items):
+def item_descriptions_trimmed_pts(items: list) -> int:
     pts = 0
 
     multiplier = .2
@@ -56,7 +56,7 @@ def item_descriptions_trimmed_pts(items):
 
     return pts
 
-def purchase_date_odd_pts(purchase_date):
+def purchase_date_odd_pts(purchase_date: str) -> str:
     pts = 0
 
     # Since purchase_date is a string of format yyyy-mm-dd
@@ -69,7 +69,7 @@ def purchase_date_odd_pts(purchase_date):
 
     return pts
 
-def time_of_purchase_pts(purchase_time):
+def time_of_purchase_pts(purchase_time: str) -> str:
     pts = 0
 
     # Since purchase_time is a string of format hh:mm
@@ -88,7 +88,7 @@ def time_of_purchase_pts(purchase_time):
 # ^----------- RULES FOR POINTS -----------^
 
 # This function calculates the correct number of reward points for the given receipt
-def calculate_reward_points(receipt):
+def calculate_reward_points(receipt: dict) -> int: 
     # Unpack the receipt for convenience
     retailer = receipt['retailer']
     purchase_date = receipt['purchaseDate']
