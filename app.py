@@ -25,10 +25,11 @@ def process_receipts():
         # Add the receipt to the receipts dictionary with the id as the key
         if id not in receipts:
             receipts[id] = receipt
-        return "Process receipt page - POST accessed"
+
+        return jsonify({'id':id}), 200
     else:
         # This might not be needed
-        return "Process receipt page - GET accessed"
+        return "Process receipt page - invalid GET accessed"
 
 # GET 
 @app.route('/receipts/<id>/points')
