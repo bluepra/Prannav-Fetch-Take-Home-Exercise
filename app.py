@@ -1,4 +1,5 @@
 from flask import Flask, request
+from process_receipts import calculate_reward_points
 
 app = Flask(__name__)
 
@@ -31,9 +32,6 @@ def get_points(id):
     calculate_reward_points(receipt)
     return f"Getting points for ID {id}"
 
-# This function calculates the correct number of reward points for the given receipt
-def calculate_reward_points(receipt):
-    pass
 
 if __name__ == '__main__':
     app.run()
