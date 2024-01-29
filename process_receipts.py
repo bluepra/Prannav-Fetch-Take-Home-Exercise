@@ -47,7 +47,7 @@ def item_descriptions_trimmed_pts(items):
 
     for item in items:
         description = item['shortDescription']
-        price = item['price']
+        price = float(item['price'])
 
         # If the trimmed length of the item description
         # is a multiple of 3, add pts based on price
@@ -94,7 +94,7 @@ def calculate_reward_points(receipt):
     purchase_date = receipt['purchaseDate']
     purchase_time = receipt['purchaseTime']
     items = receipt['items']
-    total = receipt['total']
+    total = float(receipt['total'])
 
     total_pts = 0
 
