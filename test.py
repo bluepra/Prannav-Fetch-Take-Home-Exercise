@@ -15,6 +15,12 @@ with open('examples/corner-market.json') as receipt:
 
 
 def test_target_receipt() -> bool:
+    """
+    This function tests the first target receipt's rewarded points
+
+    :return: True if the test passes, false otherwise
+    """
+
     test_passed = True
 
     # Test the target receipt
@@ -27,6 +33,12 @@ def test_target_receipt() -> bool:
     return test_passed
 
 def test_target2_receipt() -> bool:
+    """
+    This function tests the second target receipt's rewarded points
+
+    :return: True if the test passes, false otherwise
+    """
+
     test_passed = True
 
     # Test the target2 receipt
@@ -39,6 +51,12 @@ def test_target2_receipt() -> bool:
     return test_passed
 
 def test_corner_market_receipt() -> bool:
+    """
+    This function tests the corner market receipt's rewarded points
+
+    :return: True if the test passes, false otherwise
+    """
+
     test_passed = True
 
     # Test the corner market receipt
@@ -51,6 +69,12 @@ def test_corner_market_receipt() -> bool:
     return test_passed
 
 def test_walgreens_receipt() -> bool:
+    """
+    This function tests the walgreens receipt's rewarded points
+
+    :return: True if the test passes, false otherwise
+    """
+
     test_passed = True
 
     # Test the corner market receipt

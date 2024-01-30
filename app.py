@@ -15,6 +15,13 @@ def home():
 # POST
 @app.route('/receipts/process', methods=["POST", "GET"])
 def process_receipts():
+    """
+    This function serves a POST endpoint which acts to take in a JSON receipt 
+    and then save that receipt in an in-memory database.
+
+    :return: A Flask Response Object with the receipt's ID
+    """
+
     if request.method == "POST":
         # Save the request's JSON object as a variable - this is the receipt
         receipt = request.get_json()
@@ -34,6 +41,14 @@ def process_receipts():
 # GET 
 @app.route('/receipts/<id>/points')
 def get_points(id):
+    """
+    This function serves a GET endpoint which acts to provide the client
+    with a way to get the number of reward points of a given receipt. 
+    The client must provide a receipt id as part of the url
+
+    :return: A Flask Response Object with the receipt's total reward points
+    """
+
     # If the ID is not found, 404 error
     if id not in receipts:
         return 'No receipt found for that id', 404
