@@ -20,7 +20,7 @@ def process_receipts():
         receipt = request.get_json()
 
         # Generate a random ID for the receipt
-        id = uuid.uuid4()
+        id = str(uuid.uuid4())
 
         # Add the receipt to the receipts dictionary with the id as the key
         if id not in receipts:
