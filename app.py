@@ -13,7 +13,7 @@ def home():
     return "Fetch Backend Take Home Exercise - Prannav"
 
 # POST
-@app.route('/receipts/process', methods=["POST", "GET"])
+@app.route('/receipts/process', methods=["POST"])
 def process_receipts():
     """
     This function serves a POST endpoint which acts to take in a JSON receipt 
@@ -22,9 +22,13 @@ def process_receipts():
     :return: A Flask Response Object with the receipt's ID
     """
 
-    if request.method == "POST":
+    try:
         # Save the request's JSON object as a variable - this is the receipt
         receipt = request.get_json()
+
+        # Calculate and save the reward points of the receipt -> Doing this here to avoid 
+        # recalculation in the GET request
+        receipt['reward_points'] = calculate_reward_points(receipt)
 
         # Generate a random ID for the receipt
         id = str(uuid.uuid4())
@@ -34,9 +38,11 @@ def process_receipts():
             receipts[id] = receipt
 
         return jsonify({'id':id}), 200
-    else:
-        # This might not be needed
-        return "Process receipt page - invalid GET accessed"
+    except:
+        # If the receipt is invalid, we will end up in this except block
+        # So we must return an error message with status code 400
+        return 'The receipt is invalid', 400
+
 
 # GET 
 @app.route('/receipts/<id>/points')
@@ -54,10 +60,10 @@ def get_points(id):
         return 'No receipt found for that id', 404
 
     # Get the correct receipt from the receipts database using the given id
-    # Calculate reward points
     receipt = receipts[id]
-    total_pts = calculate_reward_points(receipt)
-    return jsonify({'points':total_pts}), 200
+    
+    # Return the reward points
+    return jsonify({'points':receipt['reward_points']}), 200
 
 
 if __name__ == '__main__':
