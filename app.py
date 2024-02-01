@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from process_receipts import calculate_reward_points
+from process_receipts import calculate_reward_points, is_valid_receipt
 import uuid
 
 app = Flask(__name__)
@@ -7,10 +7,6 @@ app = Flask(__name__)
 # In memory database for the collected receipts
 # Receipt IDs are the keys, and the values are the receipts objects
 receipts = {}
-
-@app.route('/')
-def home():
-    return "Fetch Backend Take Home Exercise - Prannav"
 
 # POST
 @app.route('/receipts/process', methods=["POST"])
@@ -30,6 +26,12 @@ def process_receipts():
         # recalculation in the GET request
         receipt['reward_points'] = calculate_reward_points(receipt)
 
+        # I am leaving this commented out because one of the retailer's (M&M Corner Market)
+        # does not match the pattern provided in api.yml
+
+        # if not is_valid_receipt(receipt):
+        #     return 'The receipt is invalid', 400
+        
         # Generate a random ID for the receipt
         id = str(uuid.uuid4())
 
@@ -39,8 +41,7 @@ def process_receipts():
 
         return jsonify({'id':id}), 200
     except:
-        # If the receipt is invalid, we will end up in this except block
-        # So we must return an error message with status code 400
+        # Something went wrong - return an error message with status code 400
         return 'The receipt is invalid', 400
 
 
@@ -67,4 +68,4 @@ def get_points(id):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

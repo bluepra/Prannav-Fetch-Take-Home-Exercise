@@ -1,4 +1,4 @@
-from process_receipts import calculate_reward_points
+from process_receipts import calculate_reward_points, is_valid_receipt
 import json
 
 with open('examples/target-receipt.json') as receipt:
@@ -12,6 +12,29 @@ with open('examples/walgreens-receipt.json') as receipt:
 
 with open('examples/corner-market.json') as receipt:
     corner_market_receipt = json.load(receipt)
+
+def test_valid_receipts() -> bool:
+    """
+    This function tests if all 4 valid receipts pass the validity check
+
+    :return: True if the test passes, false otherwise
+    """
+
+    test_passed = True
+
+    if not is_valid_receipt(target_receipt):
+        test_passed = False
+
+    if not is_valid_receipt(target2_receipt):
+        test_passed = False
+
+    if not is_valid_receipt(walgreens_receipt):
+        test_passed = False
+
+    if not is_valid_receipt(corner_market_receipt):
+        test_passed = False
+
+    return test_passed
 
 
 def test_target_receipt() -> bool:
@@ -92,3 +115,10 @@ if __name__ == '__main__':
     print('Result of test_target2_receipt is', test_target2_receipt())
     print('Result of test_corner_market_receipt is', test_corner_market_receipt())
     print('Result of test_walgreens_receipt is', test_walgreens_receipt())
+    print()
+    print('Result of testing valid receipts for validity is', test_valid_receipts())
+
+    # print(is_valid_receipt(target_receipt))
+    # print(is_valid_receipt(target2_receipt))
+    # print(is_valid_receipt(walgreens_receipt))
+    # print(is_valid_receipt(corner_market_receipt))
