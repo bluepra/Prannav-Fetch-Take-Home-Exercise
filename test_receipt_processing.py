@@ -100,7 +100,7 @@ def test_walgreens_receipt() -> bool:
 
     test_passed = True
 
-    # Test the corner market receipt
+    # Test the walgreens receipt
     expected_pts = 15
     actual_pts = calculate_reward_points(walgreens_receipt)
 
@@ -111,6 +111,7 @@ def test_walgreens_receipt() -> bool:
 
 
 if __name__ == '__main__':
+    print('---------- RUNNING TEST_RECEIPT_PROCESSING.PY ----------')
     print('Result of test_target_receipt is', test_target_receipt())
     print('Result of test_target2_receipt is', test_target2_receipt())
     print('Result of test_corner_market_receipt is', test_corner_market_receipt())

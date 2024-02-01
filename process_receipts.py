@@ -275,6 +275,12 @@ def calculate_reward_points(receipt: dict) -> int:
     items = receipt['items']
     total = float(receipt['total'])
 
+    # Ideally we wouldn't throw an error like this,
+    # We would check for receipt errors, but because of M&M Corner Market regex pattern
+    # match failure, I have not used the is_valid_receipt() function
+    if len(items) < 1:
+        raise ValueError('You need at least 1 item in your items list')
+
     total_pts = 0
 
     # Sum of the total points for the receipt based on the rules above

@@ -36,12 +36,13 @@ def process_receipts():
         id = str(uuid.uuid4())
 
         # Add the receipt to the receipts dictionary with the id as the key
-        if id not in receipts:
-            receipts[id] = receipt
+        # Since the id is randomly generated, an id clash should be extremely unlikely 
+        receipts[id] = receipt
 
         return jsonify({'id':id}), 200
-    except:
+    except Exception as e:
         # Something went wrong - return an error message with status code 400
+        # app.logger.error('Something went wrong: ', str(e))
         return 'The receipt is invalid', 400
 
 
@@ -69,3 +70,4 @@ def get_points(id):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+    # app.run()
