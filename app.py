@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from process_receipts import calculate_reward_points, is_valid_receipt
+from process_receipts import calculate_reward_points
 import uuid
 
 app = Flask(__name__)
