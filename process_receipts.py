@@ -133,14 +133,11 @@ def time_of_purchase_pts(purchase_time: str) -> str:
     hour = int(purchase_time.split(':')[0])
     mins = int(purchase_time.split(':')[-1])
 
-    low = 14 
-    high = 15
-
     if mins > 59:
         raise ValueError('Minutes in purchaseTime are invalid')
 
     # Allow receipts on or after 14:01 and on or before 15:59
-    if (hour == 14 and mins > 0 and mins <= 59) or (hour == 15 and mins >= 0 and mins <= 59):
+    if (hour == 14 and mins > 0) or hour == 15:
         pts += 10
 
     return pts
