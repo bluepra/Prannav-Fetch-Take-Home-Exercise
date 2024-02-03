@@ -1,4 +1,5 @@
-from process_receipts import calculate_reward_points, is_valid_receipt
+from process_receipts import calculate_reward_points 
+from validate_receipts import is_valid_receipt
 import json
 
 with open('examples/target-receipt.json') as receipt:
