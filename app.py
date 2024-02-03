@@ -25,12 +25,6 @@ def process_receipts():
         # Calculate and save the reward points of the receipt -> Doing this here to avoid 
         # recalculation in the GET request
         receipt['reward_points'] = calculate_reward_points(receipt)
-
-        # I am leaving this commented out because one of the retailer's (M&M Corner Market)
-        # does not match the pattern provided in api.yml
-
-        # if not is_valid_receipt(receipt):
-        #     return 'The receipt is invalid', 400
         
         # Generate a random ID for the receipt
         id = str(uuid.uuid4())
