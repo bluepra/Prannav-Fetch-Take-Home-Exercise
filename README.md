@@ -12,7 +12,7 @@ Welcome to the Fetch Take Home Backend Exercise. All work done by Prannav Arora.
 
 ## How to run tests
 1. Follow steps 1-4 from How to run section above
-2. Open the container in interactive mode: ```docker exec -it {container_name}```
+2. Open the container in interactive mode: ```docker exec -it {container_name} sh```
 3. Once inside container, run: ```python test_requests.py``` or ```python test_receipt_processing.py``` 
    
 Thank you and appreciate any and all feedback!
